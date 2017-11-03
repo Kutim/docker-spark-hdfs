@@ -1,7 +1,7 @@
 version: "3"
 services:
   master:
-    image: rafabsb/spark-hadoop-build-test
+    image: rafabsb/docker-spark-hdfs
     command: bin/spark-class org.apache.spark.deploy.master.Master -h master
     env_file:
       - ./project.env
@@ -38,7 +38,7 @@ services:
       - ./volumes/spark/dependencies:/tmp/dependencies
 
   worker1:
-    image: rafabsb/spark-hadoop-build-test
+    image: rafabsb/docker-spark-hdfs
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
     env_file:
       - ./project.env
@@ -76,7 +76,7 @@ services:
       - master
 
   worker2:
-    image: rafabsb/spark-hadoop-build-test
+    image: rafabsb/docker-spark-hdfs
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
     env_file:
       - ./project.env
@@ -114,7 +114,7 @@ services:
       - master
 
   worker3:
-    image: rafabsb/spark-hadoop-build-test
+    image: rafabsb/docker-spark-hdfs
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
     env_file:
       - ./project.env
